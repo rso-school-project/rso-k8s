@@ -9,11 +9,11 @@ spec:
   rules:
     - http:
         paths:
-          - path: /comments(/|$)(.*)
+          - path: /image-comments(/|$)(.*)
             backend:
-              serviceName: comments
-              servicePort: 8081
-          - path: /image-catalog(/|$)(.*)
+              serviceName: image-comments-service
+              servicePort: 8001
+          - path: /image-handler(/|$)(.*)
             backend:
-              serviceName: image-catalog
-              servicePort: 8080
+              serviceName: image-handler-service
+              servicePort: 8000
