@@ -7,13 +7,29 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-    - http:
-        paths:
-          - path: /image-comments(/|$)(.*)
-            backend:
-              serviceName: image-comments-service
-              servicePort: 8001
-          - path: /image-handler(/|$)(.*)
-            backend:
-              serviceName: image-handler-service
-              servicePort: 8000
+  - http:
+      paths:
+      - backend:
+          serviceName: image-handler-service
+          servicePort: 8000
+        path: /image-handler(/|$)(.*)
+      - backend:
+          serviceName: image-comments-service
+          servicePort: 8001
+        path: /image-comments(/|$)(.*)
+      - backend:
+          serviceName: image-upload-service
+          servicePort: 8002
+        path: /image-upload(/|$)(.*)
+      - backend:
+          serviceName: image-sharing-service
+          servicePort: 8003
+        path: /image-sharing(/|$)(.*)
+      - backend:
+          serviceName: user-handler-service
+          servicePort: 8004
+        path: /user-handler(/|$)(.*)
+      - backend:
+          serviceName: image-frontend-service
+          servicePort: 80
+        path: /()(.*)
